@@ -1,6 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
+# lock file (Cloudflare Pages will regenerate this)
+package-lock.json
+
 /node_modules
 /.pnp
 .pnp.*
