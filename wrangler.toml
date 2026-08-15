@@ -1,2 +1,6 @@
-name = "my-local-info"
-pages_build_output_dir = "out"
+name = "my-local-info-seongnam"
+compatibility_date = "2026-08-15"
+
+[assets]
+directory = "./out"
+binding = "ASSETS"
