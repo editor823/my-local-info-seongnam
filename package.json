@@ -12,6 +12,7 @@
     "node": ">=20.0.0 <25.0.0"
   },
   "dependencies": {
+    "@google/genai": "^2.17.1",
     "gray-matter": "^4.0.3",
     "next": "^15.1.7",
     "next-sitemap": "^4.2.3",
