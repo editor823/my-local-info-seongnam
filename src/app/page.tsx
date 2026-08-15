@@ -32,15 +32,33 @@ export default function Home() {
       {/* 1. 네이버 블로그 스타일 상단 큰 하늘색 배너 */}
       <header className="bg-[#e8f3ff] border-b border-[#d0e5ff] py-12 sm:py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block bg-[#03c75a] text-white text-xs font-bold px-3 py-1 rounded-full mb-3 shadow-sm">
-            성남시 공식 블로그 스타일
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <span className="inline-block bg-[#03c75a] text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+              성남시 공식 블로그 스타일
+            </span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-[#0f2942] tracking-tight mb-3">
             우리 동네 소식통 📢
           </h1>
-          <p className="text-sm sm:text-lg text-[#3b6690] font-medium max-w-xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-lg text-[#3b6690] font-medium max-w-xl mx-auto leading-relaxed mb-6">
             성남시의 최신 행사·축제 소식과 우리 가족 맞춤 지원금 혜택을 전해드립니다.
           </p>
+
+          {/* 상단 네비게이션 메뉴 */}
+          <nav className="inline-flex items-center gap-2 bg-white p-1.5 rounded-xl border border-[#cce3ff] shadow-sm text-xs sm:text-sm font-bold">
+            <Link
+              href="/"
+              className="bg-[#03c75a] text-white px-4 py-2 rounded-lg transition-colors"
+            >
+              생활 정보 홈
+            </Link>
+            <Link
+              href="/blog"
+              className="text-slate-600 hover:text-[#03c75a] hover:bg-slate-50 px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5"
+            >
+              <span>✍️</span> 동네 블로그
+            </Link>
+          </nav>
         </div>
       </header>
 
@@ -90,7 +108,7 @@ export default function Home() {
                     </div>
 
                     <h3 className="text-lg sm:text-xl font-bold text-[#111111] hover:text-[#2b72c4] transition-colors leading-snug">
-                      <Link href={`/info/${item.id}`}>{item.title}</Link>
+                      <Link href="/blog">{item.title}</Link>
                     </h3>
 
                     <p className="text-xs sm:text-sm text-[#555555] line-clamp-2 leading-relaxed">
@@ -100,7 +118,7 @@ export default function Home() {
                     <div className="pt-1 flex items-center justify-between text-xs text-slate-500">
                       <span>👥 대상: <strong>{item.target}</strong></span>
                       <Link
-                        href={`/info/${item.id}`}
+                        href="/blog"
                         className="text-[#2b72c4] font-bold hover:underline inline-flex items-center gap-1 text-xs"
                       >
                         자세히 보기 &gt;
@@ -141,7 +159,7 @@ export default function Home() {
                   </div>
 
                   <h3 className="text-lg font-bold text-[#111111] mb-2 leading-snug">
-                    <Link href={`/info/${item.id}`} className="hover:text-[#03c75a] transition-colors">
+                    <Link href="/blog" className="hover:text-[#03c75a] transition-colors">
                       {item.title}
                     </Link>
                   </h3>
@@ -166,7 +184,7 @@ export default function Home() {
                   <div className="flex items-center justify-between text-xs text-slate-500 pt-1">
                     <span>🏛️ {item.location}</span>
                     <Link
-                      href={`/info/${item.id}`}
+                      href="/blog"
                       className="bg-[#03c75a] hover:bg-[#02b350] text-white font-bold px-3 py-1.5 rounded text-xs transition-colors"
                     >
                       상세보기 &gt;
