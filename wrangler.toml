@@ -1,4 +1,5 @@
 name = "my-local-info-seongnam"
+main = "src/app/page.tsx"
 compatibility_date = "2026-08-15"
 
 [assets]
