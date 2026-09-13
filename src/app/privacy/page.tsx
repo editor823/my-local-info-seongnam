@@ -84,7 +84,7 @@ export default function PrivacyPage() {
             개인정보 침해에 대한 신고나 상담이 필요하신 경우 아래 문의처를 통해 신속하게 답변받으실 수 있습니다.
           </p>
           <p className="text-sm font-semibold text-slate-700">
-            문의 이메일: <span className="text-[#03c75a]">contact@localinfo.kr</span> (운영팀)
+            문의 이메일: <a href="mailto:editor823@gmail.com" className="text-blue-600 hover:underline">editor823@gmail.com</a> (운영팀)
           </p>
         </section>
 
