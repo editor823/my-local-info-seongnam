@@ -16,3 +16,88 @@ body {
   background: #f8fafc;
   color: #1e293b;
 }
+
+/* 블로그 본문 가독성 극대화 커스텀 스타일 (17px, 줄간격 1.85, 넉넉한 여백) */
+.blog-content {
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.85; /* 1.85배 여유로운 행간 */
+  color: #334155; /* slate-700 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.blog-content p {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.blog-content h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 2.75rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.blog-content h3 {
+  font-size: 1.35rem; /* ~21.6px */
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 2.25rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+}
+
+.blog-content h4 {
+  font-size: 1.15rem; /* ~18.4px */
+  font-weight: 700;
+  color: #1e293b;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.blog-content ul,
+.blog-content ol {
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.blog-content li {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.8;
+}
+
+.blog-content strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.blog-content blockquote {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid #3b82f6;
+  background-color: #f0f7ff;
+  border-radius: 0.5rem;
+  color: #1e3a8a;
+}
+
+.blog-content hr {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  border-color: #e2e8f0;
+}
+
+.blog-content a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

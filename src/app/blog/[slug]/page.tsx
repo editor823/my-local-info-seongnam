@@ -96,12 +96,13 @@ export default async function BlogPostPage({
             )}
           </div>
 
-          {/* 마크다운 렌더링 본문 */}
-          <div className="prose prose-slate max-w-none prose-headings:font-black prose-headings:text-slate-900 prose-headings:tracking-tight prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline leading-relaxed text-sm sm:text-base">
+          {/* 마크다운 렌더링 본문 (17px, 줄간격 1.85, 넉넉한 여백 적용) */}
+          <div className="blog-content prose prose-slate max-w-none prose-headings:font-black prose-headings:text-slate-900 prose-headings:tracking-tight prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {post.content}
             </ReactMarkdown>
           </div>
+
 
           {/* 정보 확인 안내 박스 */}
           <div className="bg-blue-50/70 border border-blue-100 rounded-2xl p-4 text-xs text-blue-900 leading-relaxed space-y-1">
