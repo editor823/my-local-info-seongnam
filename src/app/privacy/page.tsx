@@ -1,40 +1,31 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "개인정보처리방침 | 성남시 우리 동네 생활 정보",
-  description: "우리 동네 소식통의 개인정보 수집, 이용, 쿠키 정책 및 제3자(Google AdSense 등) 서비스 안내입니다.",
+  title: "개인정보처리방침 | 우리 동네 이야기",
+  description: "우리 동네 이야기의 개인정보 수집, 이용, 쿠키 정책 및 제3자(Google AdSense 등) 서비스 안내입니다.",
 };
 
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-[#f8fafc] text-[#334155] flex flex-col font-sans">
-      <header className="bg-white border-b border-slate-200 py-6 px-4">
-        <div className="max-w-3xl mx-auto flex items-center justify-between">
-          <Link href="/" className="text-lg font-black text-[#0f2942] hover:text-[#03c75a] transition-colors">
-            📢 우리 동네 소식통
-          </Link>
-          <nav className="flex items-center gap-4 text-sm font-medium text-slate-600">
-            <Link href="/" className="hover:text-[#03c75a]">홈</Link>
-            <Link href="/blog" className="hover:text-[#03c75a]">동네 블로그</Link>
-            <Link href="/about" className="hover:text-[#03c75a]">소개</Link>
-            <Link href="/contact" className="hover:text-[#03c75a]">문의하기</Link>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       <main className="max-w-3xl mx-auto px-4 py-12 flex-1 space-y-8">
         <div className="border-b border-slate-200 pb-6">
-          <span className="text-xs font-bold text-[#03c75a] uppercase tracking-wider bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
+          <span className="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
             Privacy Policy
           </span>
           <h1 className="text-3xl font-extrabold text-[#0f172a] mt-3">
             개인정보처리방침
           </h1>
           <p className="text-slate-500 mt-2 text-sm leading-relaxed">
-            ‘우리 동네 소식통’(이하 ‘사이트’)은 이용자의 개인정보를 소중히 여기며 관련 법령을 준수합니다.
+            ‘우리 동네 이야기’(이하 ‘사이트’)는 이용자의 개인정보를 소중히 여기며 관련 법령을 준수합니다.
           </p>
         </div>
+
 
         <section className="space-y-3 text-sm sm:text-base leading-relaxed">
           <h2 className="text-xl font-bold text-[#0f172a]">1. 수집하는 개인정보 항목</h2>
@@ -93,20 +84,8 @@ export default function PrivacyPage() {
         </div>
       </main>
 
-      <footer className="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
-        <div className="max-w-3xl mx-auto px-4 space-y-2">
-          <div className="flex justify-center gap-4 text-xs text-slate-600">
-            <Link href="/about" className="hover:underline">소개</Link>
-            <span>|</span>
-            <Link href="/privacy" className="hover:underline font-bold text-slate-900">개인정보처리방침</Link>
-            <span>|</span>
-            <Link href="/terms" className="hover:underline">이용약관</Link>
-            <span>|</span>
-            <Link href="/contact" className="hover:underline">문의하기</Link>
-          </div>
-          <p>© 2026 Seongnam Local Info. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
+

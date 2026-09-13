@@ -1,47 +1,38 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "이용약관 및 면책조항 | 성남시 우리 동네 생활 정보",
-  description: "우리 동네 소식통 서비스 이용 조건 및 공공데이터 정보 제공에 관한 법적 면책 조항 안내입니다.",
+  title: "이용약관 및 면책조항 | 우리 동네 이야기",
+  description: "우리 동네 이야기 서비스 이용 조건 및 공공데이터 정보 제공에 관한 법적 면책 조항 안내입니다.",
 };
 
 export default function TermsPage() {
   return (
     <div className="min-h-screen bg-[#f8fafc] text-[#334155] flex flex-col font-sans">
-      <header className="bg-white border-b border-slate-200 py-6 px-4">
-        <div className="max-w-3xl mx-auto flex items-center justify-between">
-          <Link href="/" className="text-lg font-black text-[#0f2942] hover:text-[#03c75a] transition-colors">
-            📢 우리 동네 소식통
-          </Link>
-          <nav className="flex items-center gap-4 text-sm font-medium text-slate-600">
-            <Link href="/" className="hover:text-[#03c75a]">홈</Link>
-            <Link href="/blog" className="hover:text-[#03c75a]">동네 블로그</Link>
-            <Link href="/about" className="hover:text-[#03c75a]">소개</Link>
-            <Link href="/contact" className="hover:text-[#03c75a]">문의하기</Link>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       <main className="max-w-3xl mx-auto px-4 py-12 flex-1 space-y-8">
         <div className="border-b border-slate-200 pb-6">
-          <span className="text-xs font-bold text-[#03c75a] uppercase tracking-wider bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
+          <span className="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
             Terms & Disclaimer
           </span>
           <h1 className="text-3xl font-extrabold text-[#0f172a] mt-3">
             이용약관 및 면책조항
           </h1>
           <p className="text-slate-500 mt-2 text-sm leading-relaxed">
-            ‘우리 동네 소식통’ 서비스를 이용해 주시는 모든 분들께 감사드리며, 서비스 이용 조건과 안내 사항을 전달드립니다.
+            ‘우리 동네 이야기’ 서비스를 이용해 주시는 모든 분들께 감사드리며, 서비스 이용 조건과 안내 사항을 전달드립니다.
           </p>
         </div>
 
         <section className="space-y-3 text-sm sm:text-base leading-relaxed">
           <h2 className="text-xl font-bold text-[#0f172a]">1. 서비스의 성격</h2>
           <p>
-            본 웹사이트는 행정안전부 공공데이터포털(data.go.kr) 및 각 지자체/정부 부처에서 공개한 오픈 데이터를 기반으로, 시민들의 편의를 돕기 위해 정보를 수집·가공하여 무료로 제공하는 <strong>비공식 민간 정보 포털</strong>입니다.
+            본 웹사이트는 행정안전부 공공데이터포털(data.go.kr) 및 각 지자체/정부 부처에서 공개한 오픈 데이터를 기반으로, 시민들의 편의를 돕기 위해 정보를 수집·가공하여 무료로 제공하는 <strong>비공식 민간 생활 정보 포털</strong>입니다.
           </p>
         </section>
+
 
         <section className="space-y-3 text-sm sm:text-base leading-relaxed">
           <h2 className="text-xl font-bold text-[#0f172a]">2. 정보의 정확성 및 면책 조항 (Disclaimer)</h2>
@@ -75,20 +66,8 @@ export default function TermsPage() {
         </div>
       </main>
 
-      <footer className="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
-        <div className="max-w-3xl mx-auto px-4 space-y-2">
-          <div className="flex justify-center gap-4 text-xs text-slate-600">
-            <Link href="/about" className="hover:underline">소개</Link>
-            <span>|</span>
-            <Link href="/privacy" className="hover:underline">개인정보처리방침</Link>
-            <span>|</span>
-            <Link href="/terms" className="hover:underline font-bold text-slate-900">이용약관</Link>
-            <span>|</span>
-            <Link href="/contact" className="hover:underline">문의하기</Link>
-          </div>
-          <p>© 2026 Seongnam Local Info. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
+

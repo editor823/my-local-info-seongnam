@@ -1,31 +1,21 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "문의하기 | 성남시 우리 동네 생활 정보",
+  title: "문의하기 | 우리 동네 이야기",
   description: "서비스 관련 제휴, 콘텐츠 오류 신고, 기타 건의 사항을 남겨주세요.",
 };
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[#f8fafc] text-[#334155] flex flex-col font-sans">
-      <header className="bg-white border-b border-slate-200 py-6 px-4">
-        <div className="max-w-3xl mx-auto flex items-center justify-between">
-          <Link href="/" className="text-lg font-black text-[#0f2942] hover:text-[#03c75a] transition-colors">
-            📢 우리 동네 소식통
-          </Link>
-          <nav className="flex items-center gap-4 text-sm font-medium text-slate-600">
-            <Link href="/" className="hover:text-[#03c75a]">홈</Link>
-            <Link href="/blog" className="hover:text-[#03c75a]">동네 블로그</Link>
-            <Link href="/about" className="hover:text-[#03c75a]">소개</Link>
-            <Link href="/contact" className="text-[#03c75a] font-bold">문의하기</Link>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       <main className="max-w-3xl mx-auto px-4 py-12 flex-1 space-y-8">
         <div className="border-b border-slate-200 pb-6">
-          <span className="text-xs font-bold text-[#03c75a] uppercase tracking-wider bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
+          <span className="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
             Contact Us
           </span>
           <h1 className="text-3xl font-extrabold text-[#0f172a] mt-3">
@@ -35,6 +25,7 @@ export default function ContactPage() {
             게재된 정보의 정정 요청, 행사 제보, 협업 문의 등 소중한 의견을 보내주시면 검토 후 답변드립니다.
           </p>
         </div>
+
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-2">
@@ -79,20 +70,8 @@ export default function ContactPage() {
         </section>
       </main>
 
-      <footer className="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
-        <div className="max-w-3xl mx-auto px-4 space-y-2">
-          <div className="flex justify-center gap-4 text-xs text-slate-600">
-            <Link href="/about" className="hover:underline">소개</Link>
-            <span>|</span>
-            <Link href="/privacy" className="hover:underline">개인정보처리방침</Link>
-            <span>|</span>
-            <Link href="/terms" className="hover:underline">이용약관</Link>
-            <span>|</span>
-            <Link href="/contact" className="hover:underline font-bold text-slate-900">문의하기</Link>
-          </div>
-          <p>© 2026 Seongnam Local Info. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
+
