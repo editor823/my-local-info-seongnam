@@ -24,9 +24,9 @@ export default function Footer() {
         </nav>
 
         <div className="space-y-1 text-slate-400 text-[11px] sm:text-xs">
-          <p className="font-bold text-slate-700">성남고릴라 · 우리 동네 스마트 생활 정보 큐레이션</p>
+          <p className="font-bold text-slate-700">우리 동네 이야기 · 성남시 생활 정보 큐레이션</p>
           <p>데이터 출처: 공공데이터포털(data.go.kr) 및 정부 공식 고시 자료 기반</p>
-          <p>© 2026 Seongnam Local Info. All rights reserved.</p>
+          <p>© 2026 우리 동네 이야기. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -29,8 +29,8 @@ export default function Header() {
             </div>
             <div>
               <span className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 flex items-center gap-1.5">
-                성남<span className="text-blue-600">고릴라</span>
-                <span className="text-[10px] uppercase font-bold bg-blue-50 text-blue-600 border border-blue-100 px-1.5 py-0.5 rounded-full">Local</span>
+                우리 동네 <span className="text-blue-600">이야기</span>
+                <span className="text-[10px] uppercase font-bold bg-blue-50 text-blue-600 border border-blue-100 px-1.5 py-0.5 rounded-full">Story</span>
               </span>
               <p className="text-[11px] text-slate-400 font-medium hidden sm:block -mt-1">
                 스마트한 우리 동네 생활 정보 큐레이션

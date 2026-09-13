@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "혜택 매거진 & 블로그 | 성남고릴라",
+  title: "혜택 매거진 & 블로그 | 우리 동네 이야기",
   description: "성남시 지원금 신청 가이드, 축제 후기 및 알짜 생활 팁을 전해드리는 정보 매거진입니다.",
 };
 

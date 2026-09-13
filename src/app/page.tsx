@@ -5,7 +5,7 @@ import localInfoData from "../../public/data/local-info.json";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "성남고릴라 | 성남시 지원금·복지혜택 비교 & 축제 순위",
+  title: "우리 동네 이야기 | 성남시 지원금·복지혜택 비교 & 축제 순위",
   description: "성남 시민을 위한 알짜 지원금, 청년 월세, 출산지원금 혜택 비교 및 실시간 인기 순위와 축제 정보 아카이브!",
 };
 
