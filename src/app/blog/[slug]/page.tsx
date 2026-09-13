@@ -1,6 +1,8 @@
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 
 export function generateStaticParams() {
@@ -23,8 +25,8 @@ export default async function BlogPostPage({
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-[#f5f6f8] flex items-center justify-center p-4">
-        <div className="bg-white rounded-xl p-8 border border-slate-200 text-center max-w-md w-full shadow-sm">
+      <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center p-4">
+        <div className="bg-white rounded-2xl p-8 border border-slate-200 text-center max-w-md w-full shadow-sm">
           <h1 className="text-xl font-bold text-slate-800 mb-2">
             게시글을 찾을 수 없습니다 😅
           </h1>
@@ -33,9 +35,9 @@ export default async function BlogPostPage({
           </p>
           <Link
             href="/blog"
-            className="inline-block bg-[#03c75a] hover:bg-[#02b350] text-white font-bold px-5 py-2.5 rounded-lg text-sm transition-colors"
+            className="inline-block bg-slate-900 hover:bg-emerald-600 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-colors"
           >
-            ← 블로그 목록으로
+            ← 매거진 목록으로
           </Link>
         </div>
       </div>
@@ -43,21 +45,21 @@ export default async function BlogPostPage({
   }
 
   return (
-    <div className="min-h-screen bg-[#f5f6f8] text-[#222222] flex flex-col font-sans">
-      {/* 상단 얇은 헤더 네비게이션 */}
-      <header className="bg-[#e8f3ff] border-b border-[#d0e5ff] py-6 px-4">
-        <div className="max-w-3xl mx-auto flex items-center justify-between">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#2b72c4] hover:underline"
-          >
-            ← 블로그 목록으로
-          </Link>
-          <span className="text-xs font-bold px-3 py-1 rounded-full bg-[#03c75a] text-white">
-            동네 소식
-          </span>
+    <div className="min-h-screen bg-[#f8fafc] text-slate-800 flex flex-col font-sans">
+      {/* 1. 글로벌 헤더 */}
+      <Header />
+
+      {/* 2. 상단 빵부스러기(Breadcrumb) 바 */}
+      <div className="bg-white border-b border-slate-100 py-3 px-4 text-xs text-slate-500">
+        <div className="max-w-4xl mx-auto flex items-center gap-2">
+          <Link href="/" className="hover:text-emerald-600">홈</Link>
+          <span>&gt;</span>
+          <Link href="/blog" className="hover:text-emerald-600">혜택 매거진</Link>
+          <span>&gt;</span>
+          <span className="text-slate-800 font-medium truncate max-w-xs">{post.title}</span>
         </div>
-      </header>
+      </div>
+
 
       {/* 메인 상세 본문 */}
       <main className="max-w-3xl w-full mx-auto px-4 py-10 flex-1">
@@ -116,12 +118,8 @@ export default async function BlogPostPage({
       </main>
 
       {/* 푸터 */}
-      <footer className="bg-[#f0f2f5] border-t border-[#e2e5e9] py-8 text-center text-xs text-[#666666] mt-12">
-        <div className="max-w-3xl mx-auto px-4 space-y-2">
-          <p className="font-bold text-[#333333]">성남시 우리 동네 생활 정보 서비스</p>
-          <p>© 2026 Seongnam Local Info. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
+

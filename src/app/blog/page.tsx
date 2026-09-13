@@ -1,52 +1,35 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "동네 소식 블로그 - 성남시 생활 정보",
-  description: "성남시의 유용한 생활 소식, 축제 팁, 혜택 안내 블로그 글을 만나보세요.",
+  title: "혜택 매거진 & 블로그 | 성남고릴라",
+  description: "성남시 지원금 신청 가이드, 축제 후기 및 알짜 생활 팁을 전해드리는 정보 매거진입니다.",
 };
 
 export default function BlogListPage() {
   const posts = getAllPosts();
 
   return (
-    <div className="min-h-screen bg-[#f5f6f8] text-[#222222] flex flex-col font-sans">
-      {/* 1. 상단 네비게이션 헤더 */}
-      <header className="bg-[#e8f3ff] border-b border-[#d0e5ff] py-10 px-4">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-center sm:text-left">
-            <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
-              <Link href="/" className="text-xs text-slate-500 hover:underline">
-                홈으로
-              </Link>
-              <span className="text-xs text-slate-400">&gt;</span>
-              <span className="text-xs font-bold text-[#03c75a]">동네 블로그</span>
-            </div>
-            <h1 className="text-2xl sm:text-4xl font-black text-[#0f2942] tracking-tight">
-              우리 동네 소식 블로그 ✍️
-            </h1>
-            <p className="text-xs sm:text-sm text-[#3b6690] mt-1">
-              생활 정보부터 지원금 혜택까지 유익한 이야기를 전해드립니다.
-            </p>
-          </div>
+    <div className="min-h-screen bg-[#f8fafc] text-slate-800 flex flex-col font-sans">
+      {/* 1. 글로벌 헤더 */}
+      <Header />
 
-          {/* 네비게이션 링크 */}
-          <nav className="flex items-center gap-3">
-            <Link
-              href="/"
-              className="bg-white hover:bg-slate-50 text-slate-700 text-xs sm:text-sm font-bold px-4 py-2 rounded-lg border border-[#cce3ff] transition-colors"
-            >
-              생활 정보 홈
-            </Link>
-            <Link
-              href="/blog"
-              className="bg-[#03c75a] text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-lg transition-colors"
-            >
-              블로그
-            </Link>
-          </nav>
+      {/* 2. 상단 배너 */}
+      <div className="bg-slate-900 text-white py-12 px-4 border-b border-slate-800">
+        <div className="max-w-4xl mx-auto text-center space-y-2">
+          <span className="inline-block bg-emerald-500/20 text-emerald-300 text-xs font-bold px-3 py-1 rounded-full border border-emerald-500/30">
+            LOCAL MAGAZINE
+          </span>
+          <h1 className="text-3xl sm:text-4xl font-black tracking-tight">
+            성남 혜택 & 생활 팁 매거진
+          </h1>
+          <p className="text-slate-400 text-sm max-w-md mx-auto">
+            전문 에디터가 정리한 신청 꿀팁과 놓치면 안 될 복지 소식을 만나보세요.
+          </p>
         </div>
-      </header>
+      </div>
 
       {/* 2. 블로그 목록 메인 본문 */}
       <main className="max-w-4xl w-full mx-auto px-4 py-10 flex-1 space-y-6">
@@ -121,12 +104,8 @@ export default function BlogListPage() {
       </main>
 
       {/* 3. 하단 푸터 */}
-      <footer className="bg-[#f0f2f5] border-t border-[#e2e5e9] py-8 text-center text-xs text-[#666666] mt-12">
-        <div className="max-w-4xl mx-auto px-4 space-y-2">
-          <p className="font-bold text-[#333333]">성남시 우리 동네 생활 정보 서비스</p>
-          <p>© 2026 Seongnam Local Info. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
+
