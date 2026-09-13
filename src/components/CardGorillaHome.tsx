@@ -27,11 +27,13 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
   const [activeTab, setActiveTab] = useState<"all" | "benefit" | "event">("all");
   const [searchTerm, setSearchTerm] = useState("");
 
-  // 필터링 처리
+  // 필터링 처리 (title, name, summary, target, location, category 모두 포괄적 검색)
   const allItems = [
     ...benefits.map((b) => ({ ...b, type: "benefit" as const })),
     ...events.map((e) => ({ ...e, type: "event" as const })),
   ];
+
+  const term = searchTerm.trim().toLowerCase();
 
   const filteredItems = allItems.filter((item) => {
     const matchesTab =
@@ -39,15 +41,35 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
       (activeTab === "benefit" && item.type === "benefit") ||
       (activeTab === "event" && item.type === "event");
 
-    const matchesSearch =
-      searchTerm === "" ||
-      item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.summary.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.target.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.location.toLowerCase().includes(searchTerm.toLowerCase());
+    if (!matchesTab) return false;
+    if (!term) return true;
 
-    return matchesTab && matchesSearch;
+    const titleMatch = (item.title || "").toLowerCase().includes(term);
+    const nameMatch = (item.name || "").toLowerCase().includes(term);
+    const summaryMatch = (item.summary || "").toLowerCase().includes(term);
+    const targetMatch = (item.target || "").toLowerCase().includes(term);
+    const locationMatch = (item.location || "").toLowerCase().includes(term);
+    const categoryMatch = (item.category || "").toLowerCase().includes(term);
+
+    return titleMatch || nameMatch || summaryMatch || targetMatch || locationMatch || categoryMatch;
   });
+
+  // 검색 시 목록 영역으로 부드럽게 스크롤 이동
+  const handleSearchSubmit = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    const targetEl = document.getElementById("content-list");
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  const handleTagClick = (tag: string) => {
+    setSearchTerm(tag);
+    const targetEl = document.getElementById("content-list");
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
     <div className="space-y-12 sm:space-y-16 pb-16">
@@ -77,9 +99,9 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
             공공데이터를 기반으로 실시간 가장 인기 있는 소식을 큐레이션해 드립니다.
           </p>
 
-          {/* 깔끔한 검색바 */}
+          {/* 깔끔한 검색바 (form 태그로 엔터키 및 검색 버튼 완벽 지원) */}
           <div className="max-w-2xl mx-auto pt-4">
-            <div className="relative flex items-center bg-white rounded-2xl shadow-2xl p-2 sm:p-2.5 border border-blue-100">
+            <form onSubmit={handleSearchSubmit} className="relative flex items-center bg-white rounded-2xl shadow-2xl p-2 sm:p-2.5 border border-blue-100">
               <span className="text-xl sm:text-2xl px-3 text-blue-500">🔍</span>
               <input
                 type="text"
@@ -90,16 +112,20 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
               />
               {searchTerm && (
                 <button
+                  type="button"
                   onClick={() => setSearchTerm("")}
                   className="text-xs text-slate-400 hover:text-slate-600 px-2 font-bold"
                 >
                   지우기
                 </button>
               )}
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm px-5 py-3 rounded-xl transition-colors shrink-0 shadow-md shadow-blue-500/20">
+              <button
+                type="submit"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm px-5 py-3 rounded-xl transition-colors shrink-0 shadow-md shadow-blue-500/20"
+              >
                 검색
               </button>
-            </div>
+            </form>
 
             {/* 빠른 추천 키워드 태그 */}
             <div className="flex flex-wrap items-center justify-center gap-2 mt-4 text-xs text-slate-400">
@@ -107,8 +133,9 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
               {["청년 월세", "근로장려금", "출산지원금", "봄꽃 축제", "유아학비"].map((tag) => (
                 <button
                   key={tag}
-                  onClick={() => setSearchTerm(tag)}
-                  className="bg-slate-800/80 hover:bg-blue-900/60 hover:border-blue-400/50 text-slate-200 px-2.5 py-1 rounded-lg border border-slate-700/60 transition-colors"
+                  type="button"
+                  onClick={() => handleTagClick(tag)}
+                  className="bg-slate-800/80 hover:bg-blue-900/60 hover:border-blue-400/50 text-slate-200 px-2.5 py-1 rounded-lg border border-slate-700/60 transition-colors cursor-pointer"
                 >
                   #{tag}
                 </button>
@@ -199,13 +226,18 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
         </div>
       </section>
 
-      {/* 3. 메인 콘텐츠 탭 & 리스트 뷰 */}
-      <section className="max-w-6xl mx-auto px-4">
+      {/* 3. 메인 콘텐츠 탭 & 리스트 뷰 (id="content-list" 추가로 검색 시 자동 스크롤) */}
+      <section id="content-list" className="max-w-6xl mx-auto px-4 scroll-mt-24">
         {/* 상단 탭 전환 바 */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
-            <h2 className="text-2xl font-black text-slate-900">
+            <h2 className="text-2xl font-black text-slate-900 flex items-center gap-2">
               전체 생활 정보 & 혜택 모아보기
+              {searchTerm && (
+                <span className="text-xs bg-blue-100 text-blue-800 px-2.5 py-1 rounded-full font-bold">
+                  &apos;{searchTerm}&apos; 검색 결과 ({filteredItems.length}건)
+                </span>
+              )}
             </h2>
             <p className="text-xs text-slate-500 mt-0.5">
               분야별 맞춤 필터를 통해 필요한 소식을 빠르게 찾아보세요.
@@ -215,7 +247,7 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
           <div className="flex items-center bg-slate-100 p-1 rounded-xl font-bold text-xs shrink-0 self-start sm:self-auto">
             <button
               onClick={() => setActiveTab("all")}
-              className={`px-4 py-2 rounded-lg transition-all ${
+              className={`px-4 py-2 rounded-lg transition-all cursor-pointer ${
                 activeTab === "all"
                   ? "bg-white text-blue-600 shadow-sm"
                   : "text-slate-500 hover:text-slate-900"
@@ -225,7 +257,7 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
             </button>
             <button
               onClick={() => setActiveTab("benefit")}
-              className={`px-4 py-2 rounded-lg transition-all ${
+              className={`px-4 py-2 rounded-lg transition-all cursor-pointer ${
                 activeTab === "benefit"
                   ? "bg-white text-blue-600 shadow-sm"
                   : "text-slate-500 hover:text-slate-900"
@@ -235,7 +267,7 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
             </button>
             <button
               onClick={() => setActiveTab("event")}
-              className={`px-4 py-2 rounded-lg transition-all ${
+              className={`px-4 py-2 rounded-lg transition-all cursor-pointer ${
                 activeTab === "event"
                   ? "bg-white text-cyan-600 shadow-sm"
                   : "text-slate-500 hover:text-slate-900"
@@ -250,8 +282,17 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
         {filteredItems.length === 0 ? (
           <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center text-slate-400 space-y-3">
             <span className="text-4xl">🔎</span>
-            <p className="font-bold text-slate-700">검색된 정보가 없습니다.</p>
+            <p className="font-bold text-slate-700">&apos;{searchTerm}&apos;에 대한 검색 결과가 없습니다.</p>
             <p className="text-xs">다른 검색어로 검색하시거나 필터 탭을 변경해 보세요.</p>
+            <button
+              onClick={() => {
+                setSearchTerm("");
+                setActiveTab("all");
+              }}
+              className="inline-block mt-2 bg-blue-50 text-blue-600 font-bold text-xs px-4 py-2 rounded-xl hover:bg-blue-100 transition-colors"
+            >
+              검색 초기화
+            </button>
           </div>
         ) : (
           <div className="space-y-4">
