@@ -53,11 +53,12 @@ export default function Header() {
               <span className="text-blue-500">🏆</span> 인기 혜택 TOP
             </Link>
             <Link
-              href="/#events"
+              href="/events"
               className="px-3.5 py-2 rounded-lg hover:text-blue-600 hover:bg-blue-50/80 transition-colors"
             >
               축제 & 문화행사
             </Link>
+
             <Link
               href="/blog"
               className="px-3.5 py-2 rounded-lg hover:text-blue-600 hover:bg-blue-50/80 transition-colors flex items-center gap-1.5"
