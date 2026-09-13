@@ -72,22 +72,31 @@ async function main() {
   const todayStr = new Date().toISOString().split("T")[0];
   const geminiEndpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:generateContent";
 
-  const prompt = `아래 공공서비스 정보를 바탕으로 블로그 글을 작성해줘.
+  const prompt = `당신은 실생활에 꼭 필요한 정부 복지 및 생활 정보를 친절하고 깊이 있게 해설해 주는 전문 에디터입니다.
+아래 공공서비스 정보를 바탕으로 독자에게 실질적인 도움이 되는 고품질 블로그 글(1,500자 이상)을 정성껏 작성해 주세요.
 
 정보: ${JSON.stringify(latestItem, null, 2)}
 
-아래 형식으로 출력해줘. 반드시 이 형식만 출력하고 다른 텍스트는 없이:
+[작성 가이드라인]
+1. 단순 공고문 복사가 아니라 독자가 바로 이해할 수 있는 친근하고 명확한 어조로 작성할 것
+2. 이 혜택을 꼭 챙겨야 하는 이유 3가지
+3. 신청 자격 및 필수 구비 서류 체크리스트
+4. 신청 시 실수하기 쉬운 주의사항 팁
+5. 자주 묻는 질문(FAQ) 2가지와 답변
+
+반드시 아래 YAML 프론트매터 형식으로만 출력하고 다른 설명 텍스트는 출력하지 마세요:
 ---
-title: (친근하고 흥미로운 제목)
+title: (클릭하고 싶게 만드는 매력적이고 유익한 제목)
 date: ${todayStr}
-summary: (한 줄 요약)
-category: 정보
-tags: [태그1, 태그2, 태그3]
+summary: (이 글의 핵심 혜택을 명확히 요약한 1~2문장)
+category: 혜택정보
+tags: [핵심키워드1, 핵심키워드2, 핵심키워드3, 성남시생활정보, 정부지원금]
 ---
 
-(본문: 800자 이상, 친근한 블로그 톤, 추천 이유 3가지 포함, 신청 방법 안내)
+(본문 내용: 마크다운 소제목 ###, 글머리 기호, 표 또는 체크리스트를 풍부하게 활용하여 1,500자 이상으로 길고 알차게 작성)
 
-마지막 줄에 FILENAME: YYYY-MM-DD-keyword 형식으로 파일명도 출력해줘. 키워드는 영문으로.`;
+마지막 줄에 FILENAME: YYYY-MM-DD-keyword 형식으로 파일명을 출력해줘. 키워드는 간결한 영문 소문자 케밥케이스로.`;
+
 
   let responseText = "";
   try {

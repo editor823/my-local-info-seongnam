@@ -33,9 +33,9 @@ export default function BlogListPage() {
 
       {/* 2. 블로그 목록 메인 본문 */}
       <main className="max-w-4xl w-full mx-auto px-4 py-10 flex-1 space-y-6">
-        <div className="flex items-center justify-between pb-3 border-b-2 border-[#03c75a]">
+        <div className="flex items-center justify-between pb-3 border-b-2 border-blue-600">
           <h2 className="text-xl sm:text-2xl font-bold text-[#111111] flex items-center gap-2">
-            <span className="text-[#03c75a]">●</span> 최신 포스트 목록
+            <span className="text-blue-600">●</span> 최신 포스트 목록
           </h2>
           <span className="text-xs font-bold text-slate-500 bg-slate-200 px-2.5 py-1 rounded-full">
             총 {posts.length}편
@@ -92,12 +92,13 @@ export default function BlogListPage() {
 
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="text-[#03c75a] font-bold hover:underline inline-flex items-center gap-1"
+                    className="text-blue-600 font-bold hover:underline inline-flex items-center gap-1"
                   >
-                    글 읽기 &rarr;
+                    상세 글 읽기 &rarr;
                   </Link>
                 </div>
               </article>
+
             ))}
           </div>
         )}

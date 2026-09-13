@@ -109,10 +109,11 @@ export default async function BlogPostPage({
 
             <Link
               href="/"
-              className="inline-flex items-center gap-2 bg-[#03c75a] hover:bg-[#02b350] text-white font-bold px-6 py-2.5 rounded-xl text-sm transition-colors shadow-sm"
+              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2.5 rounded-xl text-sm transition-colors shadow-sm"
             >
               홈(생활 정보)으로 이동
             </Link>
+
           </div>
         </article>
       </main>
