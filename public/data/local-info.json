@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-09",
+  "lastUpdated": "2026-10-10",
   "events": [
     {
       "id": "event-1",
@@ -314,6 +314,18 @@
       "target": "성남시에 거주하는 기준 중위소득 180% 이하 무주택 다자녀가구(18세 이하 자녀 3명 이상)",
       "summary": "무주택 다자녀가구를 대상으로 전세자금 대출잔액의 1.5%를 연간 최대 100만 원(최대 5년)까지 지원합니다.",
       "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/378000000135"
+    },
+    {
+      "id": "378000000137",
+      "name": "아동 의료비 지원",
+      "title": "아동 의료비 지원",
+      "category": "혜택",
+      "startDate": "2026-03-31",
+      "endDate": "상시",
+      "location": "성남시",
+      "target": "성남시에 실제 거주하는 18세 미만 아동",
+      "summary": "연간 본인부담금 100만 원을 초과하는 18세 미만 아동의 의료비 중 필수 비급여 금액을 지원합니다.",
+      "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/378000000137"
     }
   ]
 }
