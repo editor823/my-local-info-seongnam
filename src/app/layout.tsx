@@ -37,6 +37,8 @@ export const metadata: Metadata = {
   },
 };
 
+const ADSENSE_ID = process.env.NEXT_PUBLIC_ADSENSE_ID;
+
 export default function RootLayout({
   children,
 }: {
@@ -48,6 +50,18 @@ export default function RootLayout({
       className="h-full antialiased"
       suppressHydrationWarning
     >
+      <head>
+        {ADSENSE_ID && (
+          <>
+            <script
+              async
+              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+              crossOrigin="anonymous"
+            />
+            <meta name="google-adsense-account" content={ADSENSE_ID} />
+          </>
+        )}
+      </head>
       <body
         className="min-h-full flex flex-col font-sans"
         suppressHydrationWarning
