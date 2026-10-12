@@ -171,7 +171,7 @@ async function runAudit() {
     console.log(`🚨 [조치 필요] 총 ${failCount}개의 게시글에서 심각한 저품질/중복 문제가 발견되었습니다. 상단 내역을 확인해 주세요.\n`);
   }
 
-  return {
+  const auditSummary = {
     success: failCount === 0,
     qualityScore,
     totalCount: files.length,
@@ -179,6 +179,14 @@ async function runAudit() {
     warnCount,
     failCount,
   };
+
+  try {
+    fs.writeFileSync(path.join(__dirname, "audit-result.json"), JSON.stringify(auditSummary, null, 2));
+  } catch (err) {
+    // ignore
+  }
+
+  return auditSummary;
 }
 
 // 스크립트 단독 실행 시
