@@ -130,7 +130,7 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
             {/* 빠른 추천 키워드 태그 */}
             <div className="flex flex-wrap items-center justify-center gap-2 mt-4 text-xs text-slate-400">
               <span className="font-bold text-sky-200">인기 키워드:</span>
-              {["청년 월세", "근로장려금", "출산지원금", "봄꽃 축제", "유아학비"].map((tag) => (
+              {["청년 월세", "근로장려금", "출산지원금", "성남 페스티벌", "유아학비"].map((tag) => (
                 <button
                   key={tag}
                   type="button"
