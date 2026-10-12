@@ -191,7 +191,39 @@ export default async function BlogPostPage({
 
           {/* 마크다운 렌더링 본문 (17px, 줄간격 1.85, 넉넉한 여백 적용) */}
           <div className="blog-content prose prose-slate max-w-none prose-headings:font-black prose-headings:text-slate-900 prose-headings:tracking-tight prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                table: ({ ...props }) => (
+                  <div className="my-6 w-full overflow-x-auto rounded-2xl border border-slate-200/90 shadow-sm bg-white">
+                    <table className="w-full text-left text-sm border-collapse" {...props} />
+                  </div>
+                ),
+                thead: ({ ...props }) => (
+                  <thead className="bg-slate-50 text-slate-900 font-extrabold border-b border-slate-200 text-xs sm:text-sm" {...props} />
+                ),
+                tbody: ({ ...props }) => (
+                  <tbody className="divide-y divide-slate-100 text-slate-700 text-xs sm:text-sm" {...props} />
+                ),
+                tr: ({ ...props }) => (
+                  <tr className="hover:bg-blue-50/50 transition-colors odd:bg-white even:bg-slate-50/60" {...props} />
+                ),
+                th: ({ ...props }) => (
+                  <th className="px-4 py-3.5 font-black text-slate-900 border-r border-slate-200/80 last:border-r-0 whitespace-nowrap bg-slate-100/70" {...props} />
+                ),
+                td: ({ ...props }) => (
+                  <td className="px-4 py-3.5 align-top border-r border-slate-100 last:border-r-0 leading-relaxed text-slate-700" {...props} />
+                ),
+                pre: ({ ...props }) => (
+                  <div className="my-6 overflow-x-auto rounded-2xl bg-slate-900 p-4 sm:p-5 text-xs sm:text-sm text-sky-200 border border-slate-800 shadow-md font-mono">
+                    <pre {...props} />
+                  </div>
+                ),
+                code: ({ ...props }) => (
+                  <code className="px-1.5 py-0.5 rounded-md bg-blue-50 text-blue-700 font-semibold text-xs font-mono border border-blue-100/60" {...props} />
+                ),
+              }}
+            >
               {post.content}
             </ReactMarkdown>
           </div>
