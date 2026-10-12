@@ -214,13 +214,27 @@ export default async function BlogPostPage({
                 td: ({ ...props }) => (
                   <td className="px-4 py-3.5 align-top border-r border-slate-100 last:border-r-0 leading-relaxed text-slate-700" {...props} />
                 ),
-                pre: ({ ...props }) => (
-                  <div className="my-6 overflow-x-auto rounded-2xl bg-slate-900 p-4 sm:p-5 text-xs sm:text-sm text-sky-200 border border-slate-800 shadow-md font-mono">
-                    <pre {...props} />
+                pre: ({ children, ...props }) => (
+                  <div className="my-6 overflow-hidden rounded-2xl bg-slate-50 border border-blue-200 shadow-xs">
+                    <div className="px-4 sm:px-5 py-2.5 bg-blue-100/60 border-b border-blue-200 flex items-center justify-between text-xs sm:text-sm font-extrabold text-blue-900">
+                      <span className="flex items-center gap-2">
+                        <span>🗺️</span> 한눈에 보는 핵심 진행 로드맵
+                      </span>
+                      <span className="text-[11px] bg-blue-200/60 text-blue-800 px-2 py-0.5 rounded-full font-bold">
+                        단계별 요약
+                      </span>
+                    </div>
+                    <div className="p-4 sm:p-5 overflow-x-auto bg-white/80">
+                      <pre className="font-sans text-sm sm:text-base font-bold text-slate-800 leading-relaxed whitespace-pre-wrap sm:whitespace-pre tracking-normal m-0 bg-transparent border-0 p-0 shadow-none text-left" {...props}>
+                        {children}
+                      </pre>
+                    </div>
                   </div>
                 ),
-                code: ({ ...props }) => (
-                  <code className="px-1.5 py-0.5 rounded-md bg-blue-50 text-blue-700 font-semibold text-xs font-mono border border-blue-100/60" {...props} />
+                code: ({ children, ...props }) => (
+                  <code className="text-slate-800 font-bold bg-transparent p-0 m-0 border-0" {...props}>
+                    {children}
+                  </code>
                 ),
               }}
             >
