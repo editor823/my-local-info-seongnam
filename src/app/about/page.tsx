@@ -6,6 +6,9 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "서비스 소개 | 우리 동네 이야기",
   description: "성남 시민들을 위한 맞춤형 축제, 문화 행사, 정부 지원금 정보를 알기 쉽게 정리하여 전해드리는 생활 정보 가이드입니다.",
+  alternates: {
+    canonical: "/about/",
+  },
 };
 
 export default function AboutPage() {
@@ -59,11 +62,17 @@ export default function AboutPage() {
           </ul>
         </section>
 
-        <div className="pt-6 border-t border-slate-200 flex justify-between items-center text-xs text-slate-500">
+        <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row gap-3 justify-between items-center text-xs text-slate-500">
           <span>최종 수정일: 2026년 9월 13일</span>
-          <Link href="/contact" className="text-[#03c75a] font-bold hover:underline">
-            운영자에게 문의하기 →
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link href="/" className="text-blue-600 font-bold hover:underline">
+              ← 홈(혜택 차트)으로 가기
+            </Link>
+            <span>·</span>
+            <Link href="/contact" className="text-blue-600 font-bold hover:underline">
+              운영자에게 문의하기 →
+            </Link>
+          </div>
         </div>
       </main>
 

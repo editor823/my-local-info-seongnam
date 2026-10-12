@@ -88,15 +88,15 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
           </div>
 
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight">
-            놓치면 후회하는 <br className="sm:hidden" />
+            성남 시민을 위한 <br className="sm:hidden" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-200 to-cyan-300">
-              우리 동네 알짜 혜택
+              맞춤 지원금 & 생활 혜택
             </span>
           </h1>
 
           <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto font-normal leading-relaxed">
-            내가 받을 수 있는 정부 지원금, 청년 월세, 지자체 축제 소식까지! <br className="hidden sm:inline" />
-            공공데이터를 기반으로 실시간 가장 인기 있는 소식을 큐레이션해 드립니다.
+            내가 받을 수 있는 정부 지원금, 청년 월세, 출산 혜택부터 지자체 축제 소식까지! <br className="hidden sm:inline" />
+            공공데이터포털 공식 고시를 바탕으로 알짜 정보를 실시간 큐레이션해 드립니다.
           </p>
 
           {/* 깔끔한 검색바 (form 태그로 엔터키 및 검색 버튼 완벽 지원) */}
@@ -129,7 +129,7 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
 
             {/* 빠른 추천 키워드 태그 */}
             <div className="flex flex-wrap items-center justify-center gap-2 mt-4 text-xs text-slate-400">
-              <span className="font-bold text-sky-200">추천 태그:</span>
+              <span className="font-bold text-sky-200">인기 키워드:</span>
               {["청년 월세", "근로장려금", "출산지원금", "봄꽃 축제", "유아학비"].map((tag) => (
                 <button
                   key={tag}
@@ -152,21 +152,21 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
             <div className="flex items-center gap-2 text-xs font-extrabold text-blue-600 uppercase tracking-wider">
               <span>REAL-TIME CHART</span>
               <span className="w-1 h-1 rounded-full bg-slate-300"></span>
-              <span className="text-slate-400 font-normal">기준: {lastUpdated}</span>
+              <span className="text-slate-400 font-normal">공공데이터 기준일: {lastUpdated}</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mt-1 flex items-center gap-2">
-              🏆 성남 시민 주목도 TOP 차트
+              🏆 성남 시민 관심도 TOP 혜택 차트
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-slate-500">
-            신청 마감 임박 및 조회수가 가장 높은 대표 혜택 순위입니다.
+            공공데이터 공식 고시와 성남 시민 관심도가 가장 높은 대표 혜택 순위입니다.
           </p>
         </div>
 
         {/* 랭킹 1위~3위 카드 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {benefits.slice(0, 3).map((item, idx) => {
-            const detailHref = item.slug ? `/blog/${item.slug}` : "/blog";
+            const detailHref = item.slug ? `/blog/${item.slug}/` : "/blog/";
             const rankBadges = [
               "bg-gradient-to-tr from-blue-600 to-sky-400 text-white shadow-blue-500/30",
               "bg-gradient-to-tr from-slate-600 to-slate-400 text-white shadow-slate-500/30",
@@ -193,7 +193,9 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
                 {/* 카드 본문 */}
                 <div className="space-y-2 mb-6">
                   <h3 className="text-lg font-black text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
-                    <Link href={detailHref}>{item.title}</Link>
+                    <Link href={detailHref} aria-label={`${item.title} 상세 안내 보기`}>
+                      {item.title}
+                    </Link>
                   </h3>
                   <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
                     {item.summary}
@@ -215,6 +217,7 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
 
                   <Link
                     href={detailHref}
+                    aria-label={`${item.title} 상세 지원 분석 및 신청 방법 보기`}
                     className="block text-center w-full py-2.5 bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white font-bold text-xs rounded-xl transition-all shadow-xs"
                   >
                     상세 혜택 분석 보기 →
@@ -297,8 +300,8 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
         ) : (
           <div className="space-y-4">
             {filteredItems.map((item, index) => {
-              const detailHref = item.slug ? `/blog/${item.slug}` : "/blog";
               const isEvent = item.type === "event";
+              const detailHref = item.slug ? `/blog/${item.slug}/` : (isEvent ? "/events/" : "/blog/");
 
               return (
                 <article
@@ -338,7 +341,9 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
                       </div>
 
                       <h3 className="text-base sm:text-lg font-black text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
-                        <Link href={detailHref}>{item.title}</Link>
+                        <Link href={detailHref} aria-label={`${item.title} ${isEvent ? "행사 상세 정보" : "혜택 안내"} 보기`}>
+                          {item.title}
+                        </Link>
                       </h3>
 
                       <p className="text-xs sm:text-sm text-slate-500 line-clamp-1 leading-relaxed">
@@ -358,10 +363,11 @@ export default function CardGorillaHome({ events, benefits, lastUpdated }: Props
 
                     <Link
                       href={detailHref}
+                      aria-label={`${item.title} ${isEvent ? "행사 세부 정보" : "혜택 신청 가이드"} 보기`}
                       className="inline-flex items-center gap-1.5 bg-slate-50 group-hover:bg-blue-600 text-slate-700 group-hover:text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all shadow-xs shrink-0"
                     >
-                      <span>자세히 보기</span>
-                      <span>&rarr;</span>
+                      <span>{isEvent ? "행사 안내 보기" : "혜택 안내 보기"}</span>
+                      <span aria-hidden="true">&rarr;</span>
                     </Link>
                   </div>
                 </article>

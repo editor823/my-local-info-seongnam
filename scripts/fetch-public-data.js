@@ -96,7 +96,21 @@ async function main() {
         const itemName = (item["서비스명"] || item.name || item.title || "").trim();
         const itemId = String(item["서비스ID"] || item.id || "").trim();
 
-        if (itemName && !existingNames.has(itemName) && (!itemId || !existingIds.has(itemId))) {
+        // 성남시 생활 정보와 무관한 키워드 필터링 (어업, 원양, 선박, 해양 등)
+        const EXCLUDE_KEYWORDS = ["어업", "어선", "원양", "해양", "선박", "수산", "항만", "수협", "귀어", "양식"];
+        const isExcluded = EXCLUDE_KEYWORDS.some(
+          (k) =>
+            itemName.includes(k) ||
+            String(item["소관기관명"] || "").includes(k) ||
+            String(item["서비스목적요약"] || "").includes(k)
+        );
+
+        if (
+          itemName &&
+          !isExcluded &&
+          !existingNames.has(itemName) &&
+          (!itemId || !existingIds.has(itemId))
+        ) {
           selectedItem = item;
           selectedRegion = region;
           break;
@@ -148,7 +162,7 @@ ${JSON.stringify(selectedItem, null, 2)}`;
   let processedItem = null;
   try {
     const geminiEndpoint =
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:generateContent";
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${geminiApiKey}`;
 
     const geminiRes = await fetch(geminiEndpoint, {
       method: "POST",

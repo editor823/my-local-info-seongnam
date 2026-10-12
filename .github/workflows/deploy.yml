@@ -42,6 +42,10 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
+      # 블로그 글 저품질 및 중복 검수봇 실행 (품질 기준 미달 시 배포 안전 차단)
+      - name: Audit Blog Posts Quality
+        run: node scripts/audit-posts.js
+
       # 스케줄(schedule) 또는 수동(workflow_dispatch) 실행 시 변경사항 커밋 & 푸시
       - name: Commit and Push Changes
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'

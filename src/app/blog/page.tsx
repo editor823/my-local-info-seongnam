@@ -4,8 +4,11 @@ import Footer from "@/components/Footer";
 import BlogListClient from "@/components/BlogListClient";
 
 export const metadata = {
-  title: "혜택 매거진 & 블로그 | 우리 동네 이야기",
-  description: "성남시 지원금 신청 가이드, 축제 후기 및 알짜 생활 팁을 전해드리는 정보 매거진입니다.",
+  title: "성남 복지 지원금 & 생활 정보 매거진 | 우리 동네 이야기",
+  description: "성남시 청년 주거비, 육아 수당, 정부 근로·자녀장려금 등 실제 받을 수 있는 복지 혜택의 자격 요건과 온라인 신청 팁을 알기 쉽게 해설해 드립니다.",
+  alternates: {
+    canonical: "/blog/",
+  },
 };
 
 export default function BlogListPage() {
@@ -23,10 +26,10 @@ export default function BlogListPage() {
             STORY & MAGAZINE
           </span>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight">
-            우리 동네 이야기 & 혜택 매거진
+            성남 생활 복지 & 혜택 매거진
           </h1>
-          <p className="text-slate-300 text-sm max-w-md mx-auto">
-            전문 에디터가 정리한 신청 꿀팁과 놓치면 안 될 복지 소식을 만나보세요.
+          <p className="text-slate-300 text-sm max-w-lg mx-auto leading-relaxed">
+            공공데이터 공식 정책을 바탕으로 복잡한 지원 자격, 제출 서류, 온라인 신청 팁을 알기 쉽게 정리해 드립니다.
           </p>
         </div>
       </div>

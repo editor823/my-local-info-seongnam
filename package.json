@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "audit": "node scripts/audit-posts.js"
   },
   "engines": {
     "node": ">=20.0.0 <25.0.0"

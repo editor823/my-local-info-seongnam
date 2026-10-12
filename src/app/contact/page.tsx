@@ -6,6 +6,9 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "문의하기 | 우리 동네 이야기",
   description: "서비스 관련 제휴, 콘텐츠 오류 신고, 기타 건의 사항을 남겨주세요.",
+  alternates: {
+    canonical: "/contact/",
+  },
 };
 
 export default function ContactPage() {
@@ -68,6 +71,15 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
+
+        <div className="pt-6 border-t border-slate-200 flex justify-between items-center text-xs text-slate-500">
+          <Link href="/" className="text-blue-600 font-bold hover:underline">
+            ← 종합 홈으로 돌아가기
+          </Link>
+          <Link href="/blog" className="text-blue-600 font-bold hover:underline">
+            혜택 매거진 둘러보기 →
+          </Link>
+        </div>
       </main>
 
       <Footer />

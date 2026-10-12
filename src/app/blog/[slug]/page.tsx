@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -13,6 +14,36 @@ export function generateStaticParams() {
   return posts.map((post) => ({
     slug: post.slug,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+
+  if (!post) {
+    return {
+      title: "게시글을 찾을 수 없습니다 | 우리 동네 이야기",
+      description: "요청하신 생활 혜택 게시글이 존재하지 않거나 변경되었습니다.",
+    };
+  }
+
+  return {
+    title: `${post.title} | 우리 동네 이야기`,
+    description: post.summary || `${post.title}의 상세 자격 조건, 지원 금액 및 온라인 신청 방법을 안내합니다.`,
+    alternates: {
+      canonical: `/blog/${slug}/`,
+    },
+    openGraph: {
+      title: `${post.title} | 우리 동네 이야기`,
+      description: post.summary,
+      type: "article",
+      publishedTime: post.date,
+    },
+  };
 }
 
 export default async function BlogPostPage({
@@ -44,14 +75,76 @@ export default async function BlogPostPage({
     );
   }
 
-  // 관련 추천 글 3편 추출 (현재 글 제외)
+  // 관련 추천 글: 같은 카테고리 글 우선 매칭 후, 부족하면 최신 글에서 보충 (현재 글 제외)
   const allPosts = getAllPosts();
-  const relatedPosts = allPosts
-    .filter((p) => p.slug !== slug)
-    .slice(0, 3);
+  const sameCategoryPosts = allPosts.filter(
+    (p) => p.slug !== slug && p.category === post.category
+  );
+  const otherPosts = allPosts.filter(
+    (p) => p.slug !== slug && p.category !== post.category
+  );
+  const relatedPosts = [...sameCategoryPosts, ...otherPosts].slice(0, 3);
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.summary,
+    datePublished: post.date,
+    dateModified: post.date,
+    inLanguage: "ko-KR",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://my-local-info-seongnam.pages.dev/blog/${slug}/`,
+    },
+    author: {
+      "@type": "Organization",
+      name: "우리 동네 이야기 편집팀",
+      url: "https://my-local-info-seongnam.pages.dev/",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "우리 동네 이야기",
+      url: "https://my-local-info-seongnam.pages.dev/",
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "홈",
+        item: "https://my-local-info-seongnam.pages.dev/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "혜택 매거진",
+        item: "https://my-local-info-seongnam.pages.dev/blog/",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: `https://my-local-info-seongnam.pages.dev/blog/${slug}/`,
+      },
+    ],
+  };
 
   return (
     <div className="min-h-screen bg-[#f8fafc] text-slate-800 flex flex-col font-sans">
+      {/* 구조화 데이터 (Article & BreadcrumbList) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* 1. 글로벌 헤더 */}
       <Header />
 
@@ -143,7 +236,8 @@ export default async function BlogPostPage({
               {relatedPosts.map((related) => (
                 <Link
                   key={related.slug}
-                  href={`/blog/${related.slug}`}
+                  href={`/blog/${related.slug}/`}
+                  aria-label={`${related.title} 상세 가이드 읽기`}
                   className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md hover:border-blue-300 transition-all flex flex-col justify-between group"
                 >
                   <div className="space-y-2">
@@ -155,13 +249,32 @@ export default async function BlogPostPage({
                     </h3>
                   </div>
                   <span className="text-xs text-blue-600 font-medium pt-3 mt-2 border-t border-slate-50 flex items-center gap-1">
-                    읽어보기 &rarr;
+                    가이드 읽어보기 &rarr;
                   </span>
                 </Link>
               ))}
             </div>
           </section>
         )}
+
+        {/* 5. 축제 & 문화행사 탐색 크로스링크 배너 */}
+        <section className="bg-gradient-to-r from-slate-900 to-[#12284c] text-white rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
+          <div className="space-y-1 text-center sm:text-left">
+            <span className="text-[11px] font-bold text-cyan-300 uppercase tracking-wider">Culture & Festival</span>
+            <h3 className="text-base sm:text-lg font-black">
+              성남시에서 진행 중인 축제 & 문화행사도 둘러보세요!
+            </h3>
+            <p className="text-xs text-slate-300">
+              가족, 연인과 함께 주말에 즐길 수 있는 공연, 플리마켓, 전시 일정을 제공합니다.
+            </p>
+          </div>
+          <Link
+            href="/events/"
+            className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-xs px-5 py-3 rounded-xl transition-colors shrink-0 shadow-sm"
+          >
+            행사 캘린더 보기 →
+          </Link>
+        </section>
       </main>
 
       {/* 5. 푸터 */}

@@ -6,6 +6,9 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "이용약관 및 면책조항 | 우리 동네 이야기",
   description: "우리 동네 이야기 서비스 이용 조건 및 공공데이터 정보 제공에 관한 법적 면책 조항 안내입니다.",
+  alternates: {
+    canonical: "/terms/",
+  },
 };
 
 export default function TermsPage() {
@@ -61,8 +64,11 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <div className="pt-6 border-t border-slate-200 text-xs text-slate-400">
-          본 약관은 2026년 9월 13일부터 적용됩니다.
+        <div className="pt-6 border-t border-slate-200 flex justify-between items-center text-xs text-slate-500">
+          <span>본 약관은 2026년 9월 13일부터 적용됩니다.</span>
+          <Link href="/" className="text-blue-600 font-bold hover:underline">
+            ← 종합 홈으로 가기
+          </Link>
         </div>
       </main>
 

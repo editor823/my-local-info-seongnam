@@ -122,7 +122,9 @@ export default function BlogListClient({ posts }: Props) {
                 </div>
 
                 <h3 className="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug">
-                  <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                  <Link href={`/blog/${post.slug}`} aria-label={`${post.title} 상세 가이드 보기`}>
+                    {post.title}
+                  </Link>
                 </h3>
 
                 <p className="text-xs sm:text-sm text-slate-500 line-clamp-2 leading-relaxed mb-4">
@@ -144,6 +146,7 @@ export default function BlogListClient({ posts }: Props) {
 
                 <Link
                   href={`/blog/${post.slug}`}
+                  aria-label={`${post.title} 가이드 상세 읽기`}
                   className="text-blue-600 font-bold hover:underline inline-flex items-center gap-1 shrink-0"
                 >
                   상세 글 읽기 &rarr;

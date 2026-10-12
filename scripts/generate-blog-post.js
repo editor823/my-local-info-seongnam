@@ -46,7 +46,7 @@ async function main() {
     fs.mkdirSync(postsDir, { recursive: true });
   }
 
-  // 기존 작성된 블로그 파일들 전체 내용 읽기
+  // 기존 작성된 블로그 파일들 전체 내용 및 slug 읽기
   const existingFiles = fs.readdirSync(postsDir).filter((file) => file.endsWith(".md"));
   const existingPostContents = existingFiles.map((file) => {
     try {
@@ -56,14 +56,17 @@ async function main() {
     }
   });
 
-  // [2단계] 아직 블로그 글로 작성되지 않은 항목 찾기 (최신 항목부터 우선 탐색)
+  // [2단계] 아직 블로그 글로 작성되지 않은 성남시 항목 찾기
   let targetItem = null;
 
-  // 최신 등록된 항목부터 역순으로 탐색
-  for (let i = allItems.length - 1; i >= 0; i--) {
-    const item = allItems[i];
+  for (const item of allItems) {
     const itemName = (item.name || item.title || "").trim();
     if (!itemName) continue;
+
+    // 만약 이미 지정된 slug 파일이 존재하면 건너뜀
+    if (item.slug && existingFiles.includes(`${item.slug}.md`)) {
+      continue;
+    }
 
     // 기존 글들의 본문이나 제목에 서비스명이 포함되어 있는지 검사
     const isAlreadyWritten = existingPostContents.some((content) =>
@@ -77,44 +80,54 @@ async function main() {
   }
 
   if (!targetItem) {
-    console.log("모든 항목에 대해 이미 블로그 글이 작성되어 있습니다.");
+    console.log("모든 항목에 대해 이미 고품질 블로그 글이 작성되어 있습니다.");
     return;
   }
 
   const targetName = targetItem.name || targetItem.title || "";
-  const targetLocation = targetItem.location || "우리 동네";
-  console.log(`[선정 완료] 블로그 글로 작성할 항목: "${targetName}" (지역: ${targetLocation})`);
+  const targetCategory = targetItem.category || "복지/혜택";
+  console.log(`[선정 완료] 블로그 글로 작성할 성남시 항목: "${targetName}" (분야: ${targetCategory})`);
 
-  // [3단계] Gemini AI로 블로그 글 생성
+  // [3단계] 성남시 전문 큐레이터 고품질 프롬프트 구성
   const todayStr = new Date().toISOString().split("T")[0];
-  const geminiEndpoint =
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:generateContent";
+  const geminiEndpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${geminiApiKey}`;
 
-  const prompt = `당신은 실생활에 꼭 필요한 정부 복지 및 지역 생활 정보를 친절하고 깊이 있게 해설해 주는 전문 에디터입니다.
-아래 공공서비스 정보를 바탕으로 독자(${targetLocation} 및 인근 지역 주민)에게 실질적인 도움이 되는 고품질 블로그 글(1,500자 이상)을 정성껏 작성해 주세요.
+  const systemPrompt = `너는 경기도 성남시(수정구·중원구·분당구)에서 10년 넘게 생활 혜택과 정책을 주민 눈높이에서 전달해온 전문 생활정보 큐레이터야.
+아래 제공하는 정보를 바탕으로 구글 애드센스 승인 기준에 완벽히 부합하는 2,500자 이상의 고품질 오리지널 블로그 글을 마크다운(.md) 형식으로 작성해줘.
 
-정보:
-${JSON.stringify(targetItem, null, 2)}
+■ 대상 정보:
+- 제목/사업명: ${targetName}
+- 소관 기관: ${targetItem.location || "성남시 / 유관기관"}
+- 지원 대상: ${targetItem.target || "성남시민"}
+- 지원 내용: ${targetItem.summary || "상세 지원 혜택"}
+- 공식 링크: ${targetItem.link || "https://www.seongnam.go.kr"}
+- 카테고리: ${targetCategory}
+- 작성 기준일: ${todayStr}
 
-[작성 가이드라인]
-1. 단순 공고문 복사가 아니라 독자가 바로 이해할 수 있는 친근하고 명확한 어조로 작성할 것
-2. 이 혜택을 꼭 챙겨야 하는 이유 3가지
-3. 신청 자격 및 필수 구비 서류 체크리스트
-4. 신청 시 실수하기 쉬운 주의사항 팁
-5. 자주 묻는 질문(FAQ) 2가지와 답변
-
-반드시 아래 YAML 프론트매터 형식으로만 출력하고 다른 설명 텍스트는 출력하지 마세요:
+■ 필수 작성 규칙 (반드시 철저히 준수):
+1. 어투: 흔한 AI 상투어("안녕하세요!", "알아보겠습니다", "3가지 이유", "지금 바로 시작하겠습니다")는 일절 쓰지 말고, 성남시 동 행정복지센터를 직접 방문해 본 에디터처럼 친절하면서도 전문적인 구어체로 작성해줘.
+2. 제목 공식: [2026 성남시/${targetCategory}] ${targetName} 핵심 총정리: 지원 자격, 신청 방법 및 실전 꿀팁
+3. 필수 구성 요소 (빠짐없이 모두 포함하여 풍성하게 작성):
+   - ① 공감 인트로 (성남시민 실생활에 왜 중요한지, 주거비/물가 체감)
+   - ② 핵심 혜택 및 지원 금액 상세 설명
+   - ③ 자격 조건 및 소득 인정액 기준 (★한눈에 보는 비교 표/Table 필수 포함)
+   - ④ 단계별 신청 절차 (1단계~4단계 세부 가이드 및 필수 서류)
+   - ⑤ [에디터 실전 꿀팁] (성남 관내 구청·주민센터 이용 팁, 자주 반려되는 실수, 대기시간 줄이는 법)
+   - ⑥ 자주 묻는 질문 3~5선 (Q&A 형식으로 헷갈리는 점 속 시원히 해결)
+   - ⑦ 요약 및 공식 문의처 안내 (성남시청 소관 부서 및 성남시 콜센터 1577-3100 포함)
+4. 서식 및 분량:
+   - 본문 상단에 반드시 아래 YAML Frontmatter를 포함할 것:
 ---
-title: (클릭하고 싶게 만드는 매력적이고 유익한 제목)
-date: ${todayStr}
-summary: (이 글의 핵심 혜택을 명확히 요약한 1~2문장)
-category: ${targetItem.category || "혜택정보"}
-tags: [${targetLocation}, 생활정보, 지원금, 복지혜택]
+title: "[2026 성남시/${targetCategory}] ${targetName} 핵심 총정리: 지원 자격, 신청 방법 및 실전 꿀팁"
+date: "${todayStr}"
+category: "${targetCategory}"
+summary: (이 글의 핵심 혜택과 지원 자격을 명확히 요약한 2문장)
+tags: ["성남시", "${targetName.replace(/\s+/g, "")}", "성남시복지", "정부지원금", "생활혜택"]
 ---
-
-(본문 내용: 마크다운 소제목 ###, 글머리 기호, 표 또는 체크리스트를 풍부하게 활용하여 1,500자 이상으로 길고 알차게 작성)
-
-마지막 줄에 FILENAME: YYYY-MM-DD-keyword 형식으로 파일명을 출력해줘. 키워드는 간결한 영문 소문자 케밥케이스로.`;
+   - 글 중간중간 표(Table), 인용구(>), 체크리스트를 적극적으로 활용해서 가독성을 높일 것.
+   - 글자 수는 공백 포함 2,500자 이상(공고문 단순 복붙 금지, 해설 중심 오리지널 작성)으로 알차게 채울 것.
+   - 글의 가장 마지막 줄에는 반드시 아래 형식으로 파일명을 표기할 것:
+FILENAME: ${todayStr}-seongnam-[영문키워드슬러그]`;
 
   let responseText = "";
   try {
@@ -127,9 +140,13 @@ tags: [${targetLocation}, 생활정보, 지원금, 복지혜택]
       body: JSON.stringify({
         contents: [
           {
-            parts: [{ text: prompt }],
+            parts: [{ text: systemPrompt }],
           },
         ],
+        generationConfig: {
+          temperature: 0.7,
+          maxOutputTokens: 8192,
+        },
       }),
     });
 
@@ -141,7 +158,7 @@ tags: [${targetLocation}, 생활정보, 지원금, 복지혜택]
     const data = await res.json();
     responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
   } catch (err) {
-    console.error("Gemini API 호출 중 에러 발생 (기존 파일 유지):", err);
+    console.error("Gemini API 호출 중 에러 발생:", err);
     return;
   }
 
@@ -150,10 +167,29 @@ tags: [${targetLocation}, 생활정보, 지원금, 복지혜택]
     return;
   }
 
-  // [4단계] 파일 저장
+  // [4단계] 고품질 가드레일 검증 (Quality Guardrail)
+  // 1. 최소 글자수 검증 (한글 약 1,500자 이상 / 바이트 기준 4,000바이트 이상)
+  if (responseText.length < 1500) {
+    console.warn(`[품질 경고] 생성된 글자 수(${responseText.length}자)가 고품질 기준(2,500자 권장)에 미달하여 저품질 방지를 위해 발행을 보류합니다.`);
+    return;
+  }
+
+  // 2. 금지된 AI 상투어 포함 여부 검사
+  const bannedKeywords = ["안녕하세요!", "알아보겠습니다", "3가지 이유", "지금 바로 알아보겠습니다"];
+  const hasBannedKeyword = bannedKeywords.some((keyword) => responseText.includes(keyword));
+  if (hasBannedKeyword) {
+    console.warn("[품질 경고] AI 상투어가 포함되어 있어 글을 정제합니다.");
+    // 상투어 자동 정제
+    responseText = responseText
+      .replace(/안녕하세요!/g, "")
+      .replace(/알아보겠습니다\.?/g, "살펴봅니다.")
+      .replace(/3가지 이유/g, "핵심 포인트");
+  }
+
+  // [5단계] 마크다운 파일 저장
   try {
     const lines = responseText.trim().split("\n");
-    let filename = `${todayStr}-info-${Date.now().toString().slice(-4)}.md`;
+    let filename = `${todayStr}-seongnam-${Date.now().toString().slice(-4)}.md`;
     const postLines = [];
 
     for (let i = 0; i < lines.length; i++) {
@@ -171,11 +207,21 @@ tags: [${targetLocation}, 생활정보, 지원금, 복지혜택]
       }
     }
 
-    const finalPostContent = postLines.join("\n").trim() + "\n";
-    const targetFilePath = path.join(postsDir, filename);
+    // 마크다운 백틱 코드블록 래핑(```markdown ... ```)이 있으면 제거
+    let finalPostContent = postLines.join("\n").trim();
+    if (finalPostContent.startsWith("```markdown")) {
+      finalPostContent = finalPostContent.replace(/^```markdown\s*/, "");
+    } else if (finalPostContent.startsWith("```")) {
+      finalPostContent = finalPostContent.replace(/^```\s*/, "");
+    }
+    if (finalPostContent.endsWith("```")) {
+      finalPostContent = finalPostContent.replace(/```$/, "").trim();
+    }
+    finalPostContent += "\n";
 
+    const targetFilePath = path.join(postsDir, filename);
     fs.writeFileSync(targetFilePath, finalPostContent, "utf-8");
-    console.log(`[성공] 새로운 블로그 글 생성 완료: ${filename}`);
+    console.log(`[고품질 발행 성공] 새로운 성남시 블로그 글 생성 완료: ${filename} (용량: ${finalPostContent.length}자)`);
   } catch (err) {
     console.error("블로그 글 저장 중 에러 발생:", err);
   }
