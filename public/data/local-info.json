@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-13",
+  "lastUpdated": "2026-10-14",
   "events": [
     {
       "id": "event-1",
@@ -332,6 +332,18 @@
       "target": "성남시에 거주하는 18세 미만 아동",
       "summary": "18세 미만 아동의 연간 본인부담 의료비가 100만 원을 초과할 경우 초과된 필수 비급여 금액을 지원합니다.",
       "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/378000000137"
+    },
+    {
+      "id": "378000000138",
+      "name": "경증장애인 장애수당",
+      "title": "경증장애인 장애수당",
+      "category": "혜택",
+      "startDate": "2021-09-23",
+      "endDate": "상시",
+      "location": "성남시",
+      "target": "성남시 거주 국비 장애수당 수급 대상 경증장애인",
+      "summary": "국비 장애수당 수급 대상인 경증장애인에게 생활 안정을 위해 매월 장애수당 10,000원을 추가로 지원합니다.",
+      "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/378000000138"
     }
   ]
 }
