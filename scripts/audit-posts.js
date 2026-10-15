@@ -73,11 +73,22 @@ async function runAudit() {
       warnings.push("태그(tags)가 없습니다.");
     }
 
-    // 3. AI 상투어 검사
+    // 3. AI 상투어 검사 및 자동 정제
+    let fileModified = false;
+    let cleanRaw = rawContent;
     for (const banned of BANNED_AI_WORDS) {
-      if (rawContent.includes(banned)) {
-        issues.push(`AI 상투어 발견: '${banned}' 단어가 포함되어 있습니다.`);
+      if (cleanRaw.includes(banned)) {
+        if (banned === "살펴보도록 하겠습니다") cleanRaw = cleanRaw.replaceAll(banned, "살펴봅니다");
+        else if (banned === "알아보겠습니다") cleanRaw = cleanRaw.replaceAll(banned, "살펴봅니다");
+        else if (banned === "지금 바로 시작하겠습니다") cleanRaw = cleanRaw.replaceAll(banned, "자세히 안내해 드립니다");
+        else if (banned === "안녕하세요!") cleanRaw = cleanRaw.replaceAll(banned, "");
+        else if (banned === "3가지 이유") cleanRaw = cleanRaw.replaceAll(banned, "핵심 포인트");
+        fileModified = true;
       }
+    }
+    if (fileModified) {
+      fs.writeFileSync(filePath, cleanRaw, "utf-8");
+      warnings.push("AI 상투어가 감지되어 전문 에디터 어투로 자동 교정되었습니다.");
     }
 
     // 4. 성남시 무관 키워드 검사 (스팸 방지)

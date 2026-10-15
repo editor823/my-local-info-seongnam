@@ -168,20 +168,29 @@ FILENAME: ${todayStr}-seongnam-[영문키워드슬러그]`;
   }
 
   // [4단계] 고품질 가드레일 검증 (Quality Guardrail)
-  // 1. 최소 글자수 검증 (한글 약 1,500자 이상 / 바이트 기준 4,000바이트 이상)
-  if (responseText.length < 1500) {
-    console.warn(`[품질 경고] 생성된 글자 수(${responseText.length}자)가 고품질 기준(2,500자 권장)에 미달하여 저품질 방지를 위해 발행을 보류합니다.`);
+  // 1. 최소 글자수 검증 (검수봇 통과 기준인 공백 포함 2,000자 이상)
+  if (responseText.length < 2000) {
+    console.warn(`[품질 경고] 생성된 글자 수(${responseText.length}자)가 검수 통과 기준(최소 2,000자)에 미달하여 저품질 방지를 위해 발행을 보류합니다.`);
     return;
   }
 
-  // 2. 금지된 AI 상투어 포함 여부 검사
-  const bannedKeywords = ["안녕하세요!", "알아보겠습니다", "3가지 이유", "지금 바로 알아보겠습니다"];
+  // 2. 금지된 AI 상투어 전수 검사 및 자동 정제
+  const bannedKeywords = [
+    "안녕하세요!",
+    "알아보겠습니다",
+    "살펴보도록 하겠습니다",
+    "지금 바로 시작하겠습니다",
+    "지금 바로 알아보겠습니다",
+    "3가지 이유",
+  ];
   const hasBannedKeyword = bannedKeywords.some((keyword) => responseText.includes(keyword));
   if (hasBannedKeyword) {
-    console.warn("[품질 경고] AI 상투어가 포함되어 있어 글을 정제합니다.");
-    // 상투어 자동 정제
+    console.warn("[품질 경고] AI 상투어가 포함되어 있어 전문 에디터 어투로 정제합니다.");
     responseText = responseText
       .replace(/안녕하세요!/g, "")
+      .replace(/살펴보도록 하겠습니다\.?/g, "살펴봅니다.")
+      .replace(/지금 바로 시작하겠습니다\.?/g, "자세히 안내해 드립니다.")
+      .replace(/지금 바로 알아보겠습니다\.?/g, "살펴봅니다.")
       .replace(/알아보겠습니다\.?/g, "살펴봅니다.")
       .replace(/3가지 이유/g, "핵심 포인트");
   }
