@@ -19,24 +19,47 @@ async function main() {
       `빠른 확인 및 수정이 필요합니다.\n\n` +
       `🔗 확인하기: https://github.com/editor823/my-local-info-seongnam/actions`;
   } else {
-    // 최신 블로그 글 정보 가져오기
+    // 최신 블로그 글 정보 가져오기 (작성 날짜 기준 최신 글 추출)
     const postsDir = path.join(process.cwd(), "src", "content", "posts");
     let latestPostTitle = "";
 
     try {
       if (fs.existsSync(postsDir)) {
-        const files = fs.readdirSync(postsDir)
-          .filter((f) => f.endsWith(".md"))
-          .sort()
-          .reverse();
+        const files = fs.readdirSync(postsDir).filter((f) => f.endsWith(".md"));
+        const postsList = [];
 
-        if (files.length > 0) {
-          const latestFile = files[0];
-          const content = fs.readFileSync(path.join(postsDir, latestFile), "utf-8");
-          const titleMatch = content.match(/title:\s*(.+)/);
-          if (titleMatch) {
-            latestPostTitle = titleMatch[1].replace(/["']/g, "").trim();
+        for (const file of files) {
+          try {
+            const rawContent = fs.readFileSync(path.join(postsDir, file), "utf-8");
+            let title = "";
+            let date = "";
+
+            const titleMatch = rawContent.match(/title:\s*["']?([^"'\r\n]+)["']?/);
+            if (titleMatch) {
+              title = titleMatch[1].trim();
+            }
+
+            const dateMatch = rawContent.match(/date:\s*["']?(\d{4}-\d{2}-\d{2})["']?/);
+            if (dateMatch) {
+              date = dateMatch[1];
+            } else {
+              const fileDateMatch = file.match(/^(\d{4}-\d{2}-\d{2})/);
+              if (fileDateMatch) {
+                date = fileDateMatch[1];
+              }
+            }
+
+            postsList.push({ file, title, date });
+          } catch (err) {
+            // 개별 파일 오류 건너뜀
           }
+        }
+
+        // 날짜 기준 내림차순 정렬 (가장 최근 날짜 글이 맨 위로)
+        postsList.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+
+        if (postsList.length > 0 && postsList[0].title) {
+          latestPostTitle = postsList[0].title;
         }
       }
     } catch (e) {
