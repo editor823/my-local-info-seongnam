@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-17",
+  "lastUpdated": "2026-10-18",
   "events": [
     {
       "id": "event-1",
@@ -380,6 +380,18 @@
       "target": "경기도 장애인 활동지원 서비스를 이용 중인 성남시민",
       "summary": "기존 장애인 활동지원 수급자에게 성남시 예산으로 활동지원 서비스를 매월 10시간 추가 지원합니다.",
       "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/378000000142"
+    },
+    {
+      "id": "378000000143",
+      "name": "성남시 출산장려 지원",
+      "title": "성남시 출산장려 지원",
+      "category": "혜택",
+      "startDate": "2026-03-30",
+      "endDate": "상시",
+      "location": "성남시",
+      "target": "성남시 거주 출산 가정 및 다자녀 양육 가정",
+      "summary": "자녀 수에 따라 최대 300만 원의 출산장려금을 지원하며, 셋째 이상 자녀에게는 취학 전까지 월 10만 원의 양육수당과 단체 안심보험 가입을 지원합니다.",
+      "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/378000000143"
     }
   ]
 }
