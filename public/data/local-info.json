@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-19",
+  "lastUpdated": "2026-10-22",
   "events": [
     {
       "id": "event-1",
@@ -404,6 +404,18 @@
       "target": "감염병 노출 위험이 높은 성인(장티푸스·신증후군출혈열 위험군) 및 B형간염 항체가 없는 성인",
       "summary": "감염 위험이 높은 성인 고위험군을 위해 장티푸스·신증후군출혈열 무료 접종 및 B형간염 유료 예방접종을 지원합니다.",
       "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/378000000144"
+    },
+    {
+      "id": "378000000145",
+      "name": "아동수당플러스 지원",
+      "title": "아동수당플러스 지원",
+      "category": "혜택",
+      "startDate": "2025-05-18",
+      "endDate": "상시",
+      "location": "성남시",
+      "target": "성남시에 주민등록을 둔 8세 미만 아동",
+      "summary": "성남시에 거주하는 8세 미만 아동을 대상으로 매월 2만 원의 아동수당 체크카드 포인트를 지급합니다.",
+      "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/378000000145"
     }
   ]
 }
