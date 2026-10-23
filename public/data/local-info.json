@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-22",
+  "lastUpdated": "2026-10-23",
   "events": [
     {
       "id": "event-1",
@@ -416,6 +416,18 @@
       "target": "성남시에 주민등록을 둔 8세 미만 아동",
       "summary": "성남시에 거주하는 8세 미만 아동을 대상으로 매월 2만 원의 아동수당 체크카드 포인트를 지급합니다.",
       "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/378000000145"
+    },
+    {
+      "id": "378000000146",
+      "name": "입양축하금 지원",
+      "title": "입양축하금 지원",
+      "category": "혜택",
+      "startDate": "2021-09-23",
+      "endDate": "상시",
+      "location": "성남시",
+      "target": "성남시에 1년 이상 거주하며 아동을 입양한 가정",
+      "summary": "성남시에 1년 이상 거주한 입양 가정에 입양축하금을 지원합니다. (일반아동 500만 원, 장애아동 700만 원)",
+      "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/378000000146"
     }
   ]
 }
