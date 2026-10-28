@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-27",
+  "lastUpdated": "2026-10-28",
   "events": [
     {
       "id": "event-1",
@@ -476,6 +476,18 @@
       "target": "성남시에 180일 이상 주민등록을 두고 계속 거주 중인 출산 장애인가정",
       "summary": "성남시에 거주하는 장애인가정의 출산 시 경제적 부담을 덜어주기 위해 출산지원금을 현금으로 지원합니다.",
       "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/378000000152"
+    },
+    {
+      "id": "378000000153",
+      "name": "산모·신생아 건강관리 서비스 제공",
+      "title": "산모·신생아 건강관리 서비스 제공",
+      "category": "혜택",
+      "startDate": "2026-05-06",
+      "endDate": "상시",
+      "location": "성남시",
+      "target": "기준중위소득 150% 초과 가구의 산모 및 출산가정",
+      "summary": "전문 교육을 받은 건강관리사가 출산 가정을 방문해 산모의 산후 회복과 신생아 양육을 지원합니다.",
+      "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/378000000153"
     }
   ]
 }
