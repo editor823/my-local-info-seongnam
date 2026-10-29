@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-28",
+  "lastUpdated": "2026-10-29",
   "events": [
     {
       "id": "event-1",
@@ -488,6 +488,18 @@
       "target": "기준중위소득 150% 초과 가구의 산모 및 출산가정",
       "summary": "전문 교육을 받은 건강관리사가 출산 가정을 방문해 산모의 산후 회복과 신생아 양육을 지원합니다.",
       "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/378000000153"
+    },
+    {
+      "id": "378000000154",
+      "name": "통합복지카드 발급수수료 지원",
+      "title": "통합복지카드 발급수수료 지원",
+      "category": "혜택",
+      "startDate": "2024-05-20",
+      "endDate": "상시",
+      "location": "성남시",
+      "target": "통합복지카드를 처음 신청하는 장애인",
+      "summary": "장애인통합복지카드 신규 발급 시 발생하는 수수료 4,000원을 지원합니다.",
+      "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1004836&bnefType=all&svcId=378000000154"
     }
   ]
 }
