@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-30",
+  "lastUpdated": "2026-10-31",
   "events": [
     {
       "id": "event-1",
@@ -512,6 +512,18 @@
       "target": "성남시에 1년 이상 거주 중인 의료급여수급자 중 희귀난치성·중증·만성질환자 및 만 65세 이상 척추질환자",
       "summary": "MRI, MRA, PET 등 비급여 의료 특수장비 검사 비용을 2년에 1회, 최대 70만 원까지 본인부담금 전액 지원합니다.",
       "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1004837&bnefType=all&svcId=378000000155"
+    },
+    {
+      "id": "378000000157",
+      "name": "보훈명예수당",
+      "title": "보훈명예수당",
+      "category": "혜택",
+      "startDate": "2025-05-18",
+      "endDate": "상시",
+      "location": "성남시",
+      "target": "성남시에 거주하는 만 65세 이상의 국가유공자 및 유족",
+      "summary": "성남시에 거주하는 만 65세 이상 국가유공자 및 유족에게 매월 13만 원의 보훈명예수당을 지급합니다.",
+      "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1005223&bnefType=all&svcId=378000000157"
     }
   ]
 }
