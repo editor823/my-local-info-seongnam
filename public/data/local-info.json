@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-31",
+  "lastUpdated": "2026-11-01",
   "events": [
     {
       "id": "event-1",
@@ -524,6 +524,18 @@
       "target": "성남시에 거주하는 만 65세 이상의 국가유공자 및 유족",
       "summary": "성남시에 거주하는 만 65세 이상 국가유공자 및 유족에게 매월 13만 원의 보훈명예수당을 지급합니다.",
       "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1005223&bnefType=all&svcId=378000000157"
+    },
+    {
+      "id": "378000000158",
+      "name": "지역화폐(성남사랑상품권)",
+      "title": "지역화폐(성남사랑상품권)",
+      "category": "혜택",
+      "startDate": "2024-05-18",
+      "endDate": "상시",
+      "location": "성남시",
+      "target": "성남사랑상품권 이용자 (시민 및 관내 방문객)",
+      "summary": "성남시 관내 가맹점에서 현금처럼 사용할 수 있는 성남사랑상품권을 할인된 가격에 구매할 수 있도록 지원합니다.",
+      "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1005246&bnefType=all&svcId=378000000158"
     }
   ]
 }
