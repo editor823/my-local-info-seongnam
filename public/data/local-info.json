@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-01",
+  "lastUpdated": "2026-11-02",
   "events": [
     {
       "id": "event-1",
@@ -536,6 +536,18 @@
       "target": "성남사랑상품권 이용자 (시민 및 관내 방문객)",
       "summary": "성남시 관내 가맹점에서 현금처럼 사용할 수 있는 성남사랑상품권을 할인된 가격에 구매할 수 있도록 지원합니다.",
       "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1005246&bnefType=all&svcId=378000000158"
+    },
+    {
+      "id": "378000000159",
+      "name": "입양아동 양육수당(추가)",
+      "title": "입양아동 양육수당(추가)",
+      "category": "혜택",
+      "startDate": "2024-05-20",
+      "endDate": "상시",
+      "location": "성남시",
+      "target": "성남시에 1년 이상 거주 중인 입양 가정 (만 18세 미만 아동)",
+      "summary": "성남시에 1년 이상 거주한 입양 가정에 입양아동이 만 18세가 될 때까지 매월 5만 원의 양육수당을 현금으로 지원합니다.",
+      "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1005282&bnefType=all&svcId=378000000159"
     }
   ]
 }
