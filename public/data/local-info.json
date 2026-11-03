@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-02",
+  "lastUpdated": "2026-11-03",
   "events": [
     {
       "id": "event-1",
@@ -548,6 +548,18 @@
       "target": "성남시에 1년 이상 거주 중인 입양 가정 (만 18세 미만 아동)",
       "summary": "성남시에 1년 이상 거주한 입양 가정에 입양아동이 만 18세가 될 때까지 매월 5만 원의 양육수당을 현금으로 지원합니다.",
       "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1005282&bnefType=all&svcId=378000000159"
+    },
+    {
+      "id": "378000000162",
+      "name": "북한이탈주민 지역사회 정착 지원",
+      "title": "북한이탈주민 지역사회 정착 지원",
+      "category": "혜택",
+      "startDate": "2025-05-20",
+      "endDate": "상시",
+      "location": "성남시",
+      "target": "성남시에 최초 정착하는 북한이탈주민",
+      "summary": "하나원 수료 후 성남시에 처음 정착하는 북한이탈주민 세대에게 지역 정착을 돕기 위해 성남사랑상품권(지역화폐) 200만 원을 1회 지급합니다.",
+      "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1006087&bnefType=all&svcId=378000000162"
     }
   ]
 }
