@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-06",
+  "lastUpdated": "2026-11-07",
   "events": [
     {
       "id": "event-1",
@@ -596,6 +596,18 @@
       "target": "성남시에 1년 이상 거주한 다자녀가구(자녀 3명 이상)의 셋째 이상 미혼 대학생(30세 미만)",
       "summary": "다자녀가구 셋째 이상 대학생에게 학기당 최대 100만 원(연 최대 200만 원)의 등록금을 지원합니다.",
       "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=809988&bnefType=all&svcId=378000000167"
+    },
+    {
+      "id": "378000000169",
+      "name": "해외전시회 개별참가 지원",
+      "title": "해외전시회 개별참가 지원",
+      "category": "혜택",
+      "startDate": "2025-05-18",
+      "endDate": "상시",
+      "location": "성남시",
+      "target": "성남시에 본사 또는 공장을 둔 중소기업",
+      "summary": "해외전시회에 개별 참가하는 관내 중소기업에 부스 임차료와 기본 장치비 등 참가비용을 최대 500만 원까지 지원합니다.",
+      "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2105508&bnefType=all&svcId=378000000169"
     }
   ]
 }
