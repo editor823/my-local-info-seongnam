@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-14",
+  "lastUpdated": "2026-11-15",
   "events": [
     {
       "id": "event-1",
@@ -692,6 +692,18 @@
       "target": "의료급여 수급자, 차상위계층 등 경제적 어려움을 겪는 취약계층 환자",
       "summary": "성남시의료원을 이용하는 저소득 취약계층 환자의 의료비 부담을 줄여드리기 위해 진료비 및 의료비를 감면 지원합니다.",
       "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2001370&bnefType=all&svcId=O00049900001"
+    },
+    {
+      "id": "O00050100001",
+      "name": "성남시장학회 대학 장학금",
+      "title": "성남시장학회 대학 장학금",
+      "category": "혜택",
+      "startDate": "2022-07-15",
+      "endDate": "상시",
+      "location": "성남시",
+      "target": "성남시 초·중·고·대학교 재학생",
+      "summary": "성남시 학생들의 학업 지원과 교육 복지 향상을 위해 장학금을 현금으로 지원하는 서비스입니다.",
+      "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2001265&bnefType=all&svcId=O00050100001"
     }
   ]
 }
