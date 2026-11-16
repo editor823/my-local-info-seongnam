@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-15",
+  "lastUpdated": "2026-11-16",
   "events": [
     {
       "id": "event-1",
@@ -704,6 +704,18 @@
       "target": "성남시 초·중·고·대학교 재학생",
       "summary": "성남시 학생들의 학업 지원과 교육 복지 향상을 위해 장학금을 현금으로 지원하는 서비스입니다.",
       "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2001265&bnefType=all&svcId=O00050100001"
+    },
+    {
+      "id": "554000000101",
+      "name": "고령운전자 운전면허 자진반납 지원",
+      "title": "고령운전자 운전면허 자진반납 지원",
+      "category": "혜택",
+      "startDate": "2024-05-20",
+      "endDate": "상시",
+      "location": "광주시",
+      "target": "광주시에 주소를 둔 만 65세 이상 고령운전자 중 운전면허 자진반납자",
+      "summary": "만 65세 이상 어르신이 운전면허를 자진 반납하면 광주시 지역화폐 10만 원을 지급합니다.",
+      "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1000245&bnefType=all&svcId=554000000101"
     }
   ]
 }
