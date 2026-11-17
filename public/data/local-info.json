@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-16",
+  "lastUpdated": "2026-11-17",
   "events": [
     {
       "id": "event-1",
@@ -716,6 +716,18 @@
       "target": "광주시에 주소를 둔 만 65세 이상 고령운전자 중 운전면허 자진반납자",
       "summary": "만 65세 이상 어르신이 운전면허를 자진 반납하면 광주시 지역화폐 10만 원을 지급합니다.",
       "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1000245&bnefType=all&svcId=554000000101"
+    },
+    {
+      "id": "554000000102",
+      "name": "장애인 휠체어 등 수리지원",
+      "title": "장애인 휠체어 등 수리지원",
+      "category": "혜택",
+      "startDate": "2024-05-18",
+      "endDate": "상시",
+      "location": "광주시",
+      "target": "광주시에 6개월 이상 거주한 등록장애인 중 기초생활수급자 및 차상위계층",
+      "summary": "저소득 등록장애인을 대상으로 휠체어 부품 및 충전기 수리 비용을 1인당 연간 최대 20만 원까지 지원합니다.",
+      "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1000364&bnefType=all&svcId=554000000102"
     }
   ]
 }
