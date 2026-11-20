@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-19",
+  "lastUpdated": "2026-11-20",
   "events": [
     {
       "id": "event-1",
@@ -752,6 +752,18 @@
       "target": "광주시에 거주하는 혼인 7년 이내 무주택 신혼부부",
       "summary": "무주택 신혼부부에게 전세·월세보증금 대출 잔액의 일부(전세 1%, 월세 1.5%)를 연 1회 최대 100만 원까지 현금으로 지원합니다.",
       "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1001902&bnefType=all&svcId=554000000105"
+    },
+    {
+      "id": "554000000106",
+      "name": "임산부 물품 및 영양제(엽산제, 철분제) 택배발송(경기도 광주시)",
+      "title": "임산부 물품 및 영양제(엽산제, 철분제) 택배발송(경기도 광주시)",
+      "category": "혜택",
+      "startDate": "2024-05-20",
+      "endDate": "상시",
+      "location": "광주시",
+      "target": "광주시에 주민등록이 되어 있는 임산부",
+      "summary": "광주시에 거주하는 임산부의 건강한 출산을 돕기 위해 임신 주수에 맞춘 엽산제와 철분제 등 필수 영양제를 택배로 지원합니다.",
+      "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1001936&bnefType=all&svcId=554000000106"
     }
   ]
 }
