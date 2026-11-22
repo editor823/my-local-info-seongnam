@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-21",
+  "lastUpdated": "2026-11-22",
   "events": [
     {
       "id": "event-1",
@@ -776,6 +776,18 @@
       "target": "광주시에 거주하는 차상위계층 중 최저보험료 이하 납부 세대(등록장애인, 한부모가족)",
       "summary": "생활에 어려움을 겪는 차상위계층 장애인 및 한부모가족 세대의 국민건강보험료와 노인장기요양보험료를 지원합니다.",
       "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1004042&bnefType=all&svcId=554000000109"
+    },
+    {
+      "id": "554000000110",
+      "name": "퇴소아동 자립정착금 지원",
+      "title": "퇴소아동 자립정착금 지원",
+      "category": "혜택",
+      "startDate": "2024-05-20",
+      "endDate": "상시",
+      "location": "광주시",
+      "target": "아동복지시설 퇴소 및 가정위탁 보호가 종료된 자립준비청년",
+      "summary": "보호가 종료된 청년의 안정적인 사회 정착을 돕기 위해 자립정착금 총 1,500만 원(첫해 1,000만 원, 다음 해 500만 원)을 지원합니다.",
+      "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1004043&bnefType=all&svcId=554000000110"
     }
   ]
 }
