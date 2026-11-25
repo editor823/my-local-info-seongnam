@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-24",
+  "lastUpdated": "2026-11-25",
   "events": [
     {
       "id": "event-1",
@@ -812,6 +812,18 @@
       "target": "광주시 거주 생계·의료급여 수급자 가구",
       "summary": "생계 또는 의료급여를 받는 실제 거주 가구에 가정용 상·하수도 요금 중 10톤 분량을 감면해 드립니다.",
       "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1004316&bnefType=all&svcId=554000000113"
+    },
+    {
+      "id": "554000000114",
+      "name": "산모·신생아 건강관리 지원(경기도 광주시)",
+      "title": "산모·신생아 건강관리 지원(경기도 광주시)",
+      "category": "혜택",
+      "startDate": "2024-05-18",
+      "endDate": "상시",
+      "location": "광주시",
+      "target": "주민등록상 주소지가 광주시인 임산부",
+      "summary": "출산가정에 산모·신생아 건강관리사를 파견하여 산모의 건강 회복과 신생아 돌봄을 지원합니다.",
+      "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1004541&bnefType=all&svcId=554000000114"
     }
   ]
 }
