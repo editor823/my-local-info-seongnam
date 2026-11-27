@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-26",
+  "lastUpdated": "2026-11-27",
   "events": [
     {
       "id": "event-1",
@@ -836,6 +836,18 @@
       "target": "만 18세 이하 자녀가 1명 이상 포함된 3자녀 이상 다자녀 가구",
       "summary": "만 18세 이하 자녀가 있는 3자녀 이상 가구에 매월 가정용 상·하수도 요금 10톤분을 감면해 드립니다.",
       "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1005265&bnefType=all&svcId=554000000115"
+    },
+    {
+      "id": "554000000116",
+      "name": "장애인활동지원급여 지원(시비)",
+      "title": "장애인활동지원급여 지원(시비)",
+      "category": "혜택",
+      "startDate": "2026-03-31",
+      "endDate": "상시",
+      "location": "광주시",
+      "target": "장애인 활동지원 수급자 중 최중증 1인가구 및 취약가구",
+      "summary": "일상생활과 사회활동이 어려운 최중증 장애인 독거 및 취약가구를 대상으로 활동지원 급여(이용권)를 제공합니다.",
+      "link": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1005427&bnefType=all&svcId=554000000116"
     }
   ]
 }
